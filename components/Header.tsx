@@ -1,5 +1,5 @@
 export default function Header() {
-    return (<div className="navbar bg-neutral">
+    return (<div className="navbar">
         <div className="navbar-start">
             <div className="dropdown">
                 <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -35,7 +35,7 @@ export default function Header() {
             </ul>
         </div>
         <div className="navbar-end">
-            <a className="btn">Button</a>
+            <a className="btn bg-transparent border-none hover:bg-transparent hover:underline">Login</a>
         </div>
     </div>);
 }
