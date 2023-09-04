@@ -12,13 +12,21 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-
-        'home': "url('/galaxy.jpg')",
       },
     },
   },
   daisyui: {
-    themes: ["luxury"],
+    themes: [
+      {
+        mytheme: {
+          "primary": "#F085F2",
+          "neutral": "#7937A6",
+
+          "secondary": "#2450A6",
+          "base-100": "#1F3473",
+          "accent": "#071A40",
+        },
+      }],
   },
   plugins: [require("daisyui")],
 }
