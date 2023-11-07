@@ -7,7 +7,8 @@ export default function Header() {
     const router = useRouter();
     const { userId } = useAuth();
 
-    return (<div className="navbar">
+    return (<div className="navbar bg-neutral shadow-xl">
+        {/* Mobile nav bar */}
         <div className="navbar-start">
             <div className="dropdown">
                 <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -25,11 +26,43 @@ export default function Header() {
                     <li><a>Item 3</a></li>
                 </ul>
             </div>
-            <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+            <a className="btn btn-ghost normal-case text-xl bg-[#ce9c4b] hover:bg-[#b48231]">
+                <Image
+                                src="/icons/sig.png"
+                                width={50}
+                                height={50}
+                                alt="Person icon"
+                            /></a>
         </div>
+
+        {/* Computer nav bar */}
         <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1">
-                <li><a>Item 1</a></li>
+            <ul className="menu menu-horizontal">
+                <li>
+                        <div className="tooltip tooltip-bottom tooltip-accent" data-tip="About me">
+                        <a>
+                            <Image
+                                src="/icons/about.svg"
+                                width={23}
+                                height={23}
+                                alt="Person icon"
+                            />
+                            </a>
+                        </div>
+                </li>
+
+                <li>
+                        <div className="tooltip tooltip-bottom tooltip-accent" data-tip="Experiences">
+                        <a>
+                            <Image
+                                src="/icons/experiences.svg"
+                                width={23}
+                                height={23}
+                                alt="Computer icon"
+                            />
+                            </a>
+                        </div>
+                </li>
                 <li tabIndex={0}>
                     <details>
                         <summary>Parent</summary>
@@ -39,12 +72,11 @@ export default function Header() {
                         </ul>
                     </details>
                 </li>
-                <li><a>Item 3</a></li>
             </ul>
         </div>
         <div className="navbar-end">
             {!userId && (
-                <a  onClick={() => router.push("/sign-in")} className="btn bg-transparent border-none hover:bg-transparent hover:underline">Login</a>
+                <a onClick={() => router.push("/sign-in")} className="btn bg-transparent border-none hover:bg-transparent hover:underline">Login</a>
             )}
             <UserButton afterSignOutUrl="/" />
         </div>
