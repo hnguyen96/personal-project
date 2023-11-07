@@ -1,3 +1,8 @@
+"use client";
+import { UserButton, useAuth } from "@clerk/nextjs";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+
 export default function Header() {
     return (<div className="navbar bg-neutral shadow-lg">
         <div className="navbar-start">
@@ -35,7 +40,10 @@ export default function Header() {
             </ul>
         </div>
         <div className="navbar-end">
-            <a className="btn bg-transparent border-none hover:bg-transparent hover:underline">Login</a>
+            {!userId && (
+                <a  onClick={() => router.push("/sign-in")} className="btn bg-transparent border-none hover:bg-transparent hover:underline">Login</a>
+            )}
+            <UserButton afterSignOutUrl="/" />
         </div>
     </div>);
 }
