@@ -1,55 +1,124 @@
 "use client"
 
-import { useState } from "react";
-import { useSignIn } from "@clerk/nextjs";
+import { useForm, Controller } from "react-hook-form";
+import { FormInput, SubmitButton } from "./FormElements";
+
+import { useSignIn, isClerkAPIResponseError } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
- 
+import { Toaster, toast } from "sonner";
+import OAuthSignIn from "../auth/OAuthSignin";
+
 export default function SignInForm() {
+
+  const { register, handleSubmit, control, formState: { errors }, } = useForm<SignInForm>({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
   const { isLoaded, signIn, setActive } = useSignIn();
-  const [emailAddress, setEmailAddress] = useState("");
-  const [password, setPassword] = useState("");
   const router = useRouter();
-  // start the sign In process.
-  const handleSubmit = async (e: Event) => {
-    e.preventDefault();
-    if (!isLoaded) {
-      return;
-    }
- 
+  const onSubmit = async (data: SignInForm) => {
+    if (!isLoaded) return;
     try {
       const result = await signIn.create({
-        identifier: emailAddress,
-        password,
-      });
- 
+        identifier: data.email,
+        password: data.password,
+      })
+
       if (result.status === "complete") {
-        console.log(result);
-        await setActive({ session: result.createdSessionId });
-        router.push("/")
-      }
-      else {
+        await setActive({ session: result.createdSessionId })
+
+        router.push(`${window.location.origin}/`)
+      } else {
         /*Investigate why the login hasn't completed */
-        console.log(result);
+        console.log(result)
       }
- 
-    } catch (err: any) {
-      console.error("error", err.errors[0].longMessage)
+    } catch (error) {
+      const unknownError = "Something went wrong, please try again."
+
+      isClerkAPIResponseError(error)
+        ? toast.error(error.errors[0]?.longMessage ?? unknownError)
+        : toast.error(unknownError)
     }
   };
- 
   return (
-    <div>
-      <form>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input onChange={(e) => setEmailAddress(e.target.value)} id="email" name="email" type="email" />
+    <>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Controller
+          name="email"
+          control={control}
+          rules={{
+            required: {
+              value: true,
+              message: "Email is required",
+            },
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: "Invalid email address",
+            },
+          }}
+          render={({ field }) => (
+            <FormInput
+              type="email"
+              label="Email"
+              errors={errors?.email || null}
+              {...field} />
+          )}
+        />
+
+        <Controller
+          name="password"
+          control={control}
+          rules={
+            {
+              required: {
+                value: true,
+                message: "Password is required",
+              },
+              minLength: {
+                value: 6,
+                message: "Password needs to have 6+ characters"
+              }
+            }
+          }
+          render={({ field }) => (
+            <FormInput
+              type="password"
+              label="Password"
+              placeholder="6+ characters"
+              errors={errors?.password || null}
+              {...field}
+            />
+          )}
+        />
+
+        <div className="mt-5">
+          <SubmitButton label="Log in" width={200} />
         </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input onChange={(e) => setPassword(e.target.value)} id="password" name="password" type="password" />
-        </div>
-        <button onClick={(e:any) => handleSubmit}>Sign In</button>
       </form>
-    </div>
+
+      <div className="flex justify-center items-center w-full mt-4">
+        <span className="cursor-pointer text-line font-normal text-sm text-center w-full">
+          <button onClick={() => router.push("/sign-up")}>
+            Not a member? Sign up now
+          </button>
+        </span>
+      </div>
+
+      <div className="relative flex py-5 items-center mt-7">
+        <div className="flex-grow border-t border-gray-400"></div>
+        <span className="flex-shrink mx-2 text-line font-normal text-sm">
+          OR
+        </span>
+        <div className="flex-grow border-t border-gray-400"></div>
+      </div>
+
+      <div className="flex justify-center">
+        <OAuthSignIn />
+      </div>
+
+      <Toaster richColors />
+    </>
   );
 }
