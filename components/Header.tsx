@@ -1,5 +1,5 @@
 export default function Header() {
-    return (<div className="navbar bg-secondary">
+    return (<div className="navbar bg-neutral shadow-lg">
         <div className="navbar-start">
             <div className="dropdown">
                 <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -17,21 +17,21 @@ export default function Header() {
                     <li><a>Item 3</a></li>
                 </ul>
             </div>
-            <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+            <a className="btn btn-ghost normal-case text-xl">Nam</a>
         </div>
         <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
-                <li><a>Item 1</a></li>
+                <li><a>About me</a></li>
                 <li tabIndex={0}>
                     <details>
-                        <summary>Parent</summary>
+                        <summary>Experiences</summary>
                         <ul className="p-2">
                             <li><a>Submenu 1</a></li>
                             <li><a>Submenu 2</a></li>
                         </ul>
                     </details>
                 </li>
-                <li><a>Item 3</a></li>
+                <li><a>Contact</a></li>
             </ul>
         </div>
         <div className="navbar-end">
