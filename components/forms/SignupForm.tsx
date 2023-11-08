@@ -50,99 +50,104 @@ export default function SignUpForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      {/* Signup information */}
-      <Controller
-        name="username"
-        control={control}
-        rules={{
-          required: {
-            value: true,
-            message: "Username is required",
-          },
-        }}
-        render={({ field }) => (
-          <FormInput
-            type="input"
-            label="User Name"
-            errors={errors?.username || null}
-            {...field}
-          />
-        )}
-      />
-
-      <Controller
-        name="email"
-        control={control}
-        rules={{
-          required: {
-            value: true,
-            message: "Email is required",
-          },
-          pattern: {
-            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-            message: "Invalid email address",
-          },
-        }}
-        render={({ field }) => (
-          <FormInput
-            type="input"
-            label="Email"
-            errors={errors?.email || null}
-            {...field}
-          />
-        )}
-      />
-
-      <Controller
-        name="password"
-        control={control}
-        rules={
-          {
+    <div className="flex flex-col">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        {/* Signup information */}
+        <Controller
+          name="username"
+          control={control}
+          rules={{
             required: {
               value: true,
-              message: "Password is required",
+              message: "Username is required",
             },
-            minLength: {
-              value: 6,
-              message: "Password needs to have 6+ characters"
+          }}
+          render={({ field }) => (
+            <FormInput
+              type="input"
+              label="User Name"
+              errors={errors?.username || null}
+              {...field}
+            />
+          )}
+        />
+
+        <Controller
+          name="email"
+          control={control}
+          rules={{
+            required: {
+              value: true,
+              message: "Email is required",
+            },
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: "Invalid email address",
+            },
+          }}
+          render={({ field }) => (
+            <FormInput
+              type="input"
+              label="Email"
+              errors={errors?.email || null}
+              {...field}
+            />
+          )}
+        />
+
+        <Controller
+          name="password"
+          control={control}
+          rules={
+            {
+              required: {
+                value: true,
+                message: "Password is required",
+              },
+              minLength: {
+                value: 6,
+                message: "Password needs to have 6+ characters"
+              }
             }
           }
-        }
-        render={({ field }) => (
-          <FormInput
-            type="password"
-            label="Password"
-            placeholder="6+ characters"
-            errors={errors?.password || null}
-            {...field}
-          />
-        )}
-      />
-
-      <div className="mt-5">
-        <SubmitButton
-          label="Create account"
-          width={200}
+          render={({ field }) => (
+            <FormInput
+              type="password"
+              label="Password"
+              placeholder="6+ characters"
+              errors={errors?.password || null}
+              {...field}
+            />
+          )}
         />
-      </div>
 
-      <div className="relative flex py-5 items-center">
-        <div className="flex-grow border-t border-gray-400"></div>
-        <span className="flex-shrink mx-2 text-line font-normal text-sm">
-          OR
-        </span>
-        <div className="flex-grow border-t border-gray-400"></div>
-      </div>
-      <OAuthSignIn />
+        <div className="mt-5">
+          <SubmitButton
+            label="Create account"
+            width={200}
+          />
+        </div>
 
-      <div className="flex justify-center items-center w-full my-3">
-        <span className="cursor-pointer text-line font-normal text-sm text-center w-full">
-          <button onClick={() => router.push("/sign-in")}>
-            Already a member? Sign In
-          </button>
-        </span>
-      </div>
-    </form>
+        <div className="flex justify-center items-center w-full mt-7">
+          <span className="cursor-pointer text-line font-normal text-sm text-center w-full">
+            <button onClick={() => router.push("/sign-in")}>
+              Already a member? Sign In
+            </button>
+          </span>
+        </div>
+
+        <div className="relative flex py-5 items-center mt-2">
+          <div className="flex-grow border-t border-[#ce9c4b]"></div>
+          <span className="flex-shrink mx-2 text-line font-normal text-sm">
+            OR
+          </span>
+          <div className="flex-grow border-t border-[#ce9c4b]"></div>
+        </div>
+
+        <div className="flex justify-center">
+          <OAuthSignIn />
+        </div>
+      </form>
+    </div>
   );
 }

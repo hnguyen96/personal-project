@@ -62,7 +62,7 @@ export default function OAuthSignIn() {
           </div>
         ) : (
           <Image
-            src="/icons/facebook.svg"
+            src="/icons/facebook.png"
             width={25}
             height={25}
             alt="Facebook logo"
