@@ -13,7 +13,7 @@ export function SubmitButton({ label, disabled, width, loading }: SubmitButtonPr
     <button
       type="submit"
       disabled={disabled || loading}
-      className={`h-[44px] rounded-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-sm text-white font-semibold flex items-center justify-center px-8 py-2 w-[${width}px]`}
+      className={`h-[44px] rounded-lg bg-gradient-to-r from-indigo-800 via-purple-800 to-pink-800 text-sm text-white font-semibold flex items-center justify-center px-8 py-2 w-[${width}px]`}
     >
       {loading?<Loading/>:label}
     </button>
@@ -31,7 +31,7 @@ type FormInputProps = {
 export function FormInput({ type, label, placeholder, disabled, errors, ...rest }: FormInputProps) {
   return (
     <div className="flex flex-col gap-1 mb-4">
-      <span className="text-sm font-bold">{label}</span>
+      <span className="text-sm font-bold mb-1">{label}</span>
       <input
         className="bg-input-base h-[38px] rounded-lg pl-4"
         type={type}

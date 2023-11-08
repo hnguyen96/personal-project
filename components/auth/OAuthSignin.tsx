@@ -34,7 +34,7 @@ export default function OAuthSignIn() {
   return (
     <div className="flex gap-2">
       <div
-        className="flex items-center rounded-lg border border-line cursor-pointer p-2"
+        className="flex items-center cursor-pointer p-2"
         onClick={() => oauthSignIn("oauth_google")}
       >
         {isLoading === "oauth_google" ? (
@@ -53,7 +53,7 @@ export default function OAuthSignIn() {
         )}
       </div>
       <div
-        className="flex items-center rounded-lg border border-line cursor-pointer p-2"
+        className="flex items-center cursor-pointer p-2"
         onClick={() => oauthSignIn("oauth_facebook")}
       >
         {isLoading === "oauth_facebook" ? (
@@ -62,7 +62,7 @@ export default function OAuthSignIn() {
           </div>
         ) : (
           <Image
-            src="/icons/facebook.svg"
+            src="/icons/facebook.png"
             width={25}
             height={25}
             alt="Facebook logo"
