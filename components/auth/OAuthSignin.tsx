@@ -69,6 +69,25 @@ export default function OAuthSignIn() {
           />
         )}
       </div>
+
+      <div
+        className="flex items-center rounded-lg border border-line cursor-pointer p-2"
+        onClick={() => oauthSignIn("oauth_github")}
+      >
+        {isLoading === "oauth_github" ? (
+          <div className="flex-1">
+            <Loading />
+          </div>
+        ) : (
+          <Image
+            src="/icons/github.svg"
+            width={25}
+            height={25}
+            alt="Github logo"
+          />
+        )}
+      </div>
+
       <Toaster richColors />
     </div>
   );
