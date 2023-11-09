@@ -8,7 +8,7 @@ export default function Header() {
     const { userId } = useAuth();
 
     return (<div className="navbar bg-neutral shadow-2xl">
-        {/* Mobile nav bar */}
+        {/* Nav bar */}
         <div className="navbar-start">
             <div className="dropdown">
                 <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -29,6 +29,24 @@ export default function Header() {
                 </ul>
             </div>
 
+            <div className="hidden lg:flex">
+                <ul className="menu menu-horizontal space-x-2 text-[#ce9c4b]">
+                    <li>
+                        <a>About</a>
+                    </li>
+
+                    <li>
+                        <a>Content 2</a>
+                    </li>
+
+                    <li>
+                        <a>Content 3</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div className="navbar-center">
             <a>
                 <Image
                     src="/icons/typography.png"
@@ -37,50 +55,6 @@ export default function Header() {
                     alt=""
                 />
             </a>
-        </div>
-
-        {/* Computer nav bar */}
-        <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal space-x-5">
-                <li>
-                    <div className="tooltip tooltip-bottom tooltip-accent" data-tip="About me">
-                        <a>
-                            <Image
-                                src="/icons/about.svg"
-                                width={23}
-                                height={23}
-                                alt="Person icon"
-                            />
-                        </a>
-                    </div>
-                </li>
-
-                <li>
-                    <div className="tooltip tooltip-bottom tooltip-accent" data-tip="Experiences">
-                        <a>
-                            <Image
-                                src="/icons/experiences.svg"
-                                width={23}
-                                height={23}
-                                alt="Computer icon"
-                            />
-                        </a>
-                    </div>
-                </li>
-
-                <li>
-                    <div className="tooltip tooltip-bottom tooltip-accent" data-tip="Comment">
-                        <a>
-                            <Image
-                                src="/icons/comment.svg"
-                                width={23}
-                                height={23}
-                                alt="Messsage icon"
-                            />
-                        </a>
-                    </div>
-                </li>
-            </ul>
         </div>
         <div className="navbar-end">
             {!userId && (
