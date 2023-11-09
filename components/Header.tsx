@@ -7,7 +7,7 @@ export default function Header() {
     const router = useRouter();
     const { userId } = useAuth();
 
-    return (<div className="navbar bg-neutral shadow-xl">
+    return (<div className="navbar bg-neutral shadow-2xl">
         {/* Mobile nav bar */}
         <div className="navbar-start">
             <div className="dropdown">
@@ -29,11 +29,11 @@ export default function Header() {
                 </ul>
             </div>
 
-            <a className="btn btn-ghost normal-case text-xl bg-[#ce9c4b] hover:bg-[#b48231]">
+            <a>
                 <Image
                     src="/icons/typography.png"
-                    width={50}
-                    height={50}
+                    width={100}
+                    height={58.4}
                     alt=""
                 />
             </a>
@@ -41,7 +41,7 @@ export default function Header() {
 
         {/* Computer nav bar */}
         <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal">
+            <ul className="menu menu-horizontal space-x-5">
                 <li>
                     <div className="tooltip tooltip-bottom tooltip-accent" data-tip="About me">
                         <a>

@@ -45,8 +45,8 @@ export default function OAuthSignIn() {
           <>
             <Image
               src="/icons/google.svg"
-              width={25}
-              height={25}
+              width={30}
+              height={30}
               alt="Google logo"
             />
           </>
@@ -63,15 +63,15 @@ export default function OAuthSignIn() {
         ) : (
           <Image
             src="/icons/facebook.png"
-            width={25}
-            height={25}
+            width={30}
+            height={30}
             alt="Facebook logo"
           />
         )}
       </div>
-
+      
       <div
-        className="flex items-center rounded-lg border border-line cursor-pointer p-2"
+        className="flex items-center cursor-pointer p-2"
         onClick={() => oauthSignIn("oauth_github")}
       >
         {isLoading === "oauth_github" ? (
@@ -81,8 +81,8 @@ export default function OAuthSignIn() {
         ) : (
           <Image
             src="/icons/github.svg"
-            width={25}
-            height={25}
+            width={30}
+            height={30}
             alt="Github logo"
           />
         )}
