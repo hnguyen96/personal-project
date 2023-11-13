@@ -7,7 +7,7 @@ export default function Page() {
   const router = useRouter();
 
   return (
-    <div className="flex min-h-screen items-center font-serif flex-col justify-center bg-[#1a1a1a]">
+    <div className="flex min-h-screen items-center font-serif flex-col justify-center bg-home bg-cover">
       <div className="w-[500px] p-10 bg-secondary rounded-lg">
         <div className="text-2xl mx-auto breadcrumbs font-extrabold fon mb-5 flex justify-center">
           <ul className="text-[#ce9c4b]">

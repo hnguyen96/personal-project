@@ -14,6 +14,7 @@ const config: Config = {
 
         'home': "url('/home.jpg')",
         'cloud': "url('/cloud.jpg')",
+        'paper': "url('/paper.jpg')",
       },
     },
   },

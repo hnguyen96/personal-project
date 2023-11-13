@@ -7,7 +7,7 @@ export default function Header() {
     const router = useRouter();
     const { userId } = useAuth();
 
-    return (<div className="navbar bg-neutral shadow-2xl">
+    return (<div className="navbar">
         {/* Nav bar */}
         <div className="navbar-start">
             <div className="dropdown">
@@ -16,7 +16,7 @@ export default function Header() {
                 </label>
                 <ul tabIndex={0} className="menu menu-sm dropdown-content bg-accent mt-3 z-[1] p-2 shadow rounded-box w-52">
                     <li>
-                        <a>
+                        <a onClick={() => router.push("/about")}>
                             About me
                         </a>
                     </li>
@@ -30,24 +30,24 @@ export default function Header() {
             </div>
 
             <div className="hidden lg:flex">
-                <ul className="menu menu-horizontal space-x-2 text-[#ce9c4b]">
+                <ul className="menu menu-horizontal text-[#ce9c4b]">
                     <li>
-                        <a>About</a>
+                        <a onClick={() => router.push("/about")}>about</a>
                     </li>
 
                     <li>
-                        <a>Content 2</a>
+                        <a>content</a>
                     </li>
 
                     <li>
-                        <a>Content 3</a>
+                        <a>content</a>
                     </li>
                 </ul>
             </div>
         </div>
 
-        <div className="navbar-center">
-            <a>
+        <div className="navbar-center ">
+            <a className="hover:cursor-pointer" onClick={() => router.push("/")}>
                 <Image
                     src="/icons/typography.png"
                     width={100}
