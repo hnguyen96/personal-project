@@ -55,7 +55,7 @@ export default function VerifyEmailForm() {
           render={({ field }) => <FormInput type="text" label="Verification code" errors={errors?.code || null} {...field} />}
         />
       </div>
-      <div className="mt-8 mb-6 flex justify-center">
+      <div className="mt-4 mb-6 flex justify-center">
         <SubmitButton label="Submit" width={200} />
       </div>
       <Toaster richColors />
