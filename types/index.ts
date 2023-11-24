@@ -6,6 +6,11 @@ type SignUpForm = {
   password: string;
 };
 
+type SignUpContinueForm = {
+  username: string;
+  email: string;
+};
+
 type SignInForm = {
   email: string;
   password: string;
