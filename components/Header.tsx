@@ -36,7 +36,7 @@ export default function Header() {
                     </li>
 
                     <li>
-                        <a>content</a>
+                        <a onClick={() => router.push("/comments")}>comments</a>
                     </li>
 
                     <li>
