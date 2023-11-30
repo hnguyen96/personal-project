@@ -1,0 +1,1 @@
+export const MESSAGE_ADD_POST_SUCCESSFULLY = "Created post successfully"

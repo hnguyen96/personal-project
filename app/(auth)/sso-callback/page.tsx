@@ -14,7 +14,7 @@ export default function SSOCallbackPage() {
     });
   }, [handleRedirectCallback]);
   return (
-    <div className="w-full h-full flex justify-center items-center">
+    <div className="w-full min-h-screen h-full flex justify-center items-center">
       <Loading />
     </div>
   );

@@ -28,3 +28,18 @@ type FormInputError = {
     name?: string;
   };
 };
+
+type Post = {
+  id: number;
+  userId: string,
+  data: string;
+  createdAt: string;
+};
+
+type PostResponse = {
+  results: Post[];
+};
+
+type AddPostResponse = {
+  message: string;
+}
