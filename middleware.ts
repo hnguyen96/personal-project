@@ -11,6 +11,7 @@ export default authMiddleware({
     "/sign-in(.*)",
     "/sign-up(.*)",
     "/sso-callback(.*)",
+    "/about(.*)",
   ],
   async afterAuth(auth, req) {
     if (auth.isPublicRoute) {

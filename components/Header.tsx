@@ -7,8 +7,8 @@ export default function Header() {
     const router = useRouter();
     const { userId } = useAuth();
 
-    return (<div className="navbar bg-neutral shadow-2xl">
-        {/* Mobile nav bar */}
+    return (<div className="navbar">
+        {/* Nav bar */}
         <div className="navbar-start">
             <div className="dropdown">
                 <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -16,7 +16,7 @@ export default function Header() {
                 </label>
                 <ul tabIndex={0} className="menu menu-sm dropdown-content bg-accent mt-3 z-[1] p-2 shadow rounded-box w-52">
                     <li>
-                        <a>
+                        <a onClick={() => router.push("/about")}>
                             About me
                         </a>
                     </li>
@@ -29,7 +29,25 @@ export default function Header() {
                 </ul>
             </div>
 
-            <a>
+            <div className="hidden lg:flex">
+                <ul className="menu menu-horizontal text-[#ce9c4b]">
+                    <li>
+                        <a onClick={() => router.push("/about")}>about</a>
+                    </li>
+
+                    <li>
+                        <a>content</a>
+                    </li>
+
+                    <li>
+                        <a>content</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div className="navbar-center ">
+            <a className="hover:cursor-pointer" onClick={() => router.push("/")}>
                 <Image
                     src="/icons/typography.png"
                     width={100}
@@ -37,50 +55,6 @@ export default function Header() {
                     alt=""
                 />
             </a>
-        </div>
-
-        {/* Computer nav bar */}
-        <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal space-x-5">
-                <li>
-                    <div className="tooltip tooltip-bottom tooltip-accent" data-tip="About me">
-                        <a>
-                            <Image
-                                src="/icons/about.svg"
-                                width={23}
-                                height={23}
-                                alt="Person icon"
-                            />
-                        </a>
-                    </div>
-                </li>
-
-                <li>
-                    <div className="tooltip tooltip-bottom tooltip-accent" data-tip="Experiences">
-                        <a>
-                            <Image
-                                src="/icons/experiences.svg"
-                                width={23}
-                                height={23}
-                                alt="Computer icon"
-                            />
-                        </a>
-                    </div>
-                </li>
-
-                <li>
-                    <div className="tooltip tooltip-bottom tooltip-accent" data-tip="Comment">
-                        <a>
-                            <Image
-                                src="/icons/comment.svg"
-                                width={23}
-                                height={23}
-                                alt="Messsage icon"
-                            />
-                        </a>
-                    </div>
-                </li>
-            </ul>
         </div>
         <div className="navbar-end">
             {!userId && (

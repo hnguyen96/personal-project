@@ -12,7 +12,9 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
 
-        'sky': "url('/home.jpg')",
+        'home': "url('/home.jpg')",
+        'cloud': "url('/cloud.jpg')",
+        'paper': "url('/paper.jpg')",
       },
     },
   },
