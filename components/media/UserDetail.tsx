@@ -1,12 +1,11 @@
 import { clerkClient } from "@clerk/nextjs";
 import { User } from "@clerk/nextjs/server";
+import { useEffect, useState } from "react";
 
-// export default async function UserDetail(userId: string) {
-//     const user = await clerkClient.users.getUser(userId)
-//         .then((res) => {
-//             console.log(res);
-//             setUsername(res.username);
-//         })
+export default function UserDetail(userId: string) {    
 
-//     return username;
-// }
+        const user = clerkClient.users.getUser(userId)
+
+
+    return user;
+}

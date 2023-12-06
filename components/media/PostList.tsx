@@ -1,7 +1,7 @@
 import { auth } from "@clerk/nextjs";
 import { getPosts } from "@/app/_actions/posts";
-import { useState } from "react";
-import { User } from "@clerk/nextjs/server";
+import UserDetail from "./UserDetail";
+import Image from "next/image";
 
 export default async function PostList() {
   const { getToken } = auth();
@@ -16,15 +16,30 @@ export default async function PostList() {
     <div className="flex flex-col gap-6 mt-16">
       {posts &&
         posts?.map((post: Post) => {
+          const user = UserDetail(post.userId);
+
           return (
             <div key={post.id}>
               <div className="flex flex-col gap-2 border-t p-2">
+                <div className="flex gap-2 items-center">
+                  <div className="avatar">
+                    <div className="w-10 rounded-full">
+                      <Image
+                        src={""}
+                        alt="User image"
+                        width={40}
+                        height={40}
+                      />
+                    </div>
+                  </div>
+                  <span className="text-sm font-semibold">{ }</span>
+                </div>
                 <div className="text-xs font-normal">{post.data}</div>
-                <div className="text-xs font-normal">{post.createdAt}</div>
               </div>
             </div>
           )
-        })}
+        }
+        )}
     </div>
   );
 }

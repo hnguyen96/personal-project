@@ -5,6 +5,7 @@ export default function SocialMediaPage() {
     return (
         <div className="place-self-auto">
             <NewPost />
+            <div>didvider</div>
             <PostList />
         </div>
     )
