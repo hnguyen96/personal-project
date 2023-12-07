@@ -7,7 +7,7 @@ export default function PublicLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col font-serif items-center min-h-screen justify-between bg-home">
+    <div className="flex flex-col items-center font-serif min-h-screen justify-between bg-home">
       <Header />
       {children}
       <Footer />
