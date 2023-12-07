@@ -14,6 +14,9 @@ export default authMiddleware({
     "/about(.*)",
     "/media(.*)",
   ],
+  ignoredRoutes: [
+    "/api/webhooks(.*)",
+  ],
   apiRoutes: [
     "/api/(.*)",
   ],
