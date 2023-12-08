@@ -5,7 +5,7 @@ import { Webhook } from "svix";
 async function verifyWebhookRequest(request: Request): Promise<WebhookRequest> {
     const headers = request.headers;
     const body =  await request.json();
-    const secretKey = process.env.CLERK_WEBHOOK_SECRET_KEY || "";
+    const secretKey = process.env.WEBHOOK_SECRET || "";
     const verifyHeaders = {
         "svix-id": headers.get("svix-id") || "",
         "svix-timestamp": headers.get("svix-timestamp") || "",
