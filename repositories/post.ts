@@ -8,7 +8,30 @@ export abstract class IPostRepository {
 
 export class PostRepository extends IPostRepository {
     async getPosts(pagination?: PaginationParam, userId?: string): Promise<any[]> {
-        const posts = await prisma.post.findMany();
+        const query: any = {
+            orderBy: [
+                {
+                    createdAt: "desc"
+                }
+            ],
+        };
+        if (pagination) {
+            query["skip"] = pagination.offset;
+            query["take"] = pagination.limit;
+        }
+        query["select"] = {
+            user: {
+                select: {
+                    id: true,
+                    username: true,
+                    avatarUrl: true
+                }
+            },
+            id: true,
+            data: true,
+            createdAt: true,
+        }
+        const posts = await prisma.post.findMany(query);
         return posts
     }
 

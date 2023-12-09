@@ -30,6 +30,11 @@ type FormInputError = {
 };
 
 type Post = {
+  user: {
+    id: string;
+    username: string;
+    avatarUrl: string;
+  };
   id: number;
   userId: string,
   data: string;
