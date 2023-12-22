@@ -16,6 +16,16 @@ const config: Config = {
         'cloud': "url('/cloud.jpg')",
         'paper': "url('/paper.jpg')",
       },
+
+      animation: {
+        shine: "shine 1s",
+      },
+      keyframes: {
+        shine: {
+          "100%": { left: "125%" },
+        },
+      },
+
     },
   },
   daisyui: {
