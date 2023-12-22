@@ -12,6 +12,13 @@ export default authMiddleware({
     "/sign-up(.*)",
     "/sso-callback(.*)",
     "/about(.*)",
+    "/media(.*)",
+  ],
+  ignoredRoutes: [
+    "/api/webhooks(.*)",
+  ],
+  apiRoutes: [
+    "/api/(.*)",
   ],
   async afterAuth(auth, req) {
     if (auth.isPublicRoute) {
